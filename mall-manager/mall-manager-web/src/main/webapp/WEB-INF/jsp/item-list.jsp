@@ -9,13 +9,14 @@
 <body>
 	<div class="super-theme-example">
 		<div style="height: 550px;">
-			<table id="dg"></table>
+			<table id="dgTbItem"></table>
 		</div>
 		<br /> <br />
+		<img alt="" src="" width="100px" hegiht="100px">
 		<table id="pg" style="width: 300px"></table>
 	</div>
 	<script type="text/javascript">
-		$('#dg').datagrid({
+		$('#dgTbItem').datagrid({
 			url : 'item/getItem',
 			fit : true,
 			pagination : true,
@@ -39,30 +40,85 @@
 				text : '删除',
 				iconCls : 'fa fa-remove',
 				handler : function() {
-				}
+			}
 			} ],
 			height : 400,
 			columns : [ [ {
 				field : 'id',
-				title : 'id',
+				title : '商品id',
 				width : 100,
+				align : 'center',
 				sortable : true
 			}, {
 				field : 'title',
 				title : '标题',
-				width : 100,
+				width : 200,
+				align : 'center',
 				sortable : true
-			}, {
+			}, 
+			{
+				field : 'sell-point',
+				title : '卖点',
+				width : 100,
+				align : 'center',
+				sortable : true
+			}, 
+			{
+				field : 'num',
+				title : '库存',
+				width : 100,
+				align : 'center',
+				sortable : true
+			},
+			{
+				field : 'barcode',
+				title : '条形码',
+				width : 100,
+				align : 'center',
+				sortable : true
+			},{
 				field : 'price',
-				title : '价格',
+				title : '商品价格',
 				width : 100,
-				align : 'right',
-				sortable : true
-			}, {
+				align : 'center',
+				sortable : true,
+				formatter:TT.formatPrice
+			}, 
+			{
 				field : 'image',
 				title : '图片',
 				width : 100,
-				align : 'right'
+				align : 'center',
+				formatter:function(value,row){
+					return "<img src ="+value+"  width = '200px', height = '200px'>"
+				}
+			},{
+				field : 'cid',
+				title : '类目',
+				width : 100,
+				align : 'center',
+				sortable : true
+			},{
+				field : 'status',
+				title : '商品状态',
+				width : 50,
+				align : 'center',
+				formatter:TT.formatItemStatus
+			
+			},{
+				field : 'created',
+				title : '创建时间',
+				width : 100,
+				align : 'center',
+				formatter:TT.formatDateTime
+			
+			},{
+				field : 'updated',
+				title : '更新时间',
+				width : 100,
+				align : 'center',
+				formatter:TT.formatDateTime
+			
 			} ] ]
 		});
 	</script>
